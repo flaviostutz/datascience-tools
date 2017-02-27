@@ -24,7 +24,9 @@ RUN apt-get install pandoc -y && pip install pypandoc && pip install deap && \
 RUN pip install pydicom && \
     pip install scikit-image && \
     pip install opencv-python && \
-    pip install ImageHash
+    pip install ImageHash && \
+    apt-get install libav-tools -y && \
+    apt-get install imagemagick -y
 
 #GRAPHING
 RUN pip install plotly && \
