@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  tensorflow-cpu:
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    ports:
+      - 8888:8888
+      - 6006:6006
+    volumes:
+      - /root:/notebooks
+      - /root/input:/notebooks/input
+      - /root/output:/notebooks/output
+
+ 
+  tensorflow-gpu:
+    build:
+      context: . 
+      dockerfile: Dockerfile-gpu
+    ports:
+      - 8888:8888
+      - 6006:6006
+    volumes:
+      - /root:/notebooks
+      - /root/input:/notebooks/input
+      - /root/output:/notebooks/output
+ 
