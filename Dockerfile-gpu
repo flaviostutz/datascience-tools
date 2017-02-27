@@ -25,7 +25,8 @@ RUN pip install pydicom && \
     pip install scikit-image && \
     pip install opencv-python && \
     pip install ImageHash && \
-    apt-get install python-pythonmagick
+    apt-get install python-pythonmagick && \
+    apt-get install imagemagick
 
 #GRAPHING
 RUN pip install plotly && \
