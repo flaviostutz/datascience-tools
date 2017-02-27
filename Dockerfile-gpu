@@ -31,7 +31,8 @@ RUN pip install pydicom && \
 #GRAPHING
 RUN pip install plotly && \
 #    pip install python-igraph && \
-    pip install altair
+    pip install altair && \
+    pip install git+https://github.com/jakevdp/JSAnimation.git
 
 #GEO
 RUN pip install Geohash && \
