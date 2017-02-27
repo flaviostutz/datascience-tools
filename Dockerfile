@@ -7,7 +7,8 @@ RUN apt-get update && \
     apt-get install git -y
 
 #PROCESSING
-RUN pip install scoop
+RUN pip install scoop && \
+    pip install runipy
 
 #DATA
 RUN pip install h5py && \
