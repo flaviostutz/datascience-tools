@@ -2,7 +2,7 @@ version: "3"
 
 services:
 
-  tensorflow-cpu:
+  datascience-cpu:
     build:
       context: . 
       dockerfile: Dockerfile
@@ -15,7 +15,7 @@ services:
       - /root/output:/notebooks/output
 
  
-  tensorflow-gpu:
+  datascience-gpu:
     build:
       context: . 
       dockerfile: Dockerfile-gpu

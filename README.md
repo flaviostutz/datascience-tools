@@ -14,7 +14,6 @@ This container was created to support various experimentations on Datascience, m
 **Run container:**
 
    - CPU only:
-      - `docker-compose up -d tensorflow-cpu` OR
       - `docker run -d -v /root:/notebooks -v /root/input:/notebooks/input -v /root/output:/notebooks/output -p 8888:8888 -p 6006:6006 --name jupyter flaviostutz/datascience-tools`
    - GPU support for TensorFlow:
       - Prepare host machine with NVIDIA Cuda drivers
