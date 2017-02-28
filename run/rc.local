@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /root/datascience-snippets/run
+./boot.sh >> /var/log/boot-script

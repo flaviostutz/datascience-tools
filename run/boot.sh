@@ -7,5 +7,5 @@
 
 mount /dev/xvdf1 /mnt/datascience-input-output
 
-start-container.sh
+./start-container.sh
 
