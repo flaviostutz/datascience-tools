@@ -27,9 +27,9 @@ This container was created to support various experimentations on Datascience, m
          - Install nvidia-docker (https://github.com/NVIDIA/nvidia-docker)
       - `nvidia-docker run -d -v /root:/notebooks -v /root/input:/notebooks/input -v /root/output:/notebooks/output -p 8888:8888 -p 6006:6006 --name jupyter flaviostutz/datascience-tools:latest-gpu`
    - If you wish this container to run automatically on host boot, add these lines on /etc/rc.local:
-      - `cd /root/datascience-snippets/run
+      - `cd /root/datascience-tools/run
          ./boot.sh >> /var/log/boot-script`
-      - Change "/root/datascience-snippets" to where you cloned this repo
+      - Change "/root/datascience-tools" to where you cloned this repo
 
 
 **Autorun script:**
