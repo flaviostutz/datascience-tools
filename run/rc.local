@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-cd /root/datascience-snippets/run
+cd /root/datascience-tools/run
 ./boot.sh >> /var/log/boot-script
 
 exit 0
