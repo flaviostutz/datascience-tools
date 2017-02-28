@@ -1,8 +1,6 @@
 FROM tensorflow/tensorflow:1.0.0-py3
 #FROM tensorflow/tensorflow:1.0.0.2-gpu-py3
 
-COPY run.sh /
-
 RUN apt-get update && \
     apt-get install git -y
 
@@ -55,7 +53,8 @@ RUN rm -rf /root/.cache/pip/* && \
     apt-get clean && \
     rm -rf /usr/local/src/*
 
-#To be installed later
-# NLTK Project datasets
+RUN apt-get install supervisor -y
 
-CMD ["/run.sh"]
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+CMD ["/usr/bin/supervisord"]

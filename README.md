@@ -23,14 +23,31 @@ This container was created to support various experimentations on Datascience, m
       - Install nvidia-docker (https://github.com/NVIDIA/nvidia-docker)
       - `nvidia-docker run -d -v /root:/notebooks -v /root/input:/notebooks/input -v /root/output:/notebooks/output -p 8888:8888 -p 6006:6006 --name jupyter flaviostutz/datascience-tools:latest-gpu`
 
-**Build container:**
+**Autorun script:**
 
-   - docker-compose build 
-     OR
-   - docker build . -f Dockerfile
-   - docker build . -f Dockerfile-gpu
+   - When this container starts, it runs:
+      - Jupyter Notebook server on port 8888
+      - TensorBoard server on port 6006
+      - A custom script located at /notebooks/autorun.sh
+         - If autorun.sh doesn't exist, it is ignored 
+         - If it exists, everytime you start/restart the container it will be run once
+         - You can use this script when running large batch processes on servers that could boot/shutdown at random (like what happens when using AWS Spot Instances), so that when the server restarts this script can resume previous work
+         - Make sure you control partial save/resume for optimal computing usage
+         - On the host OS, you have to run this docker container with "--restart=always" so that it will be started automatically during boot
+         - It is possible to edit this file with Jupyter editor
+         - Example script:
+            - `#!/bin/bash
+               python test.py`
 
 **Access:**
 
    - http://[ip]:8888 for Jupyter
    - http://[ip]:6006 for TensorBoard
+
+**Build container:**
+
+   - `docker-compose build`
+     OR
+   - `docker build . -f Dockerfile`
+   - `docker build . -f Dockerfile-gpu`
+
