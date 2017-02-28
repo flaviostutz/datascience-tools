@@ -5,6 +5,8 @@
 #Call this script including the following line on host's /etc/rc.local
 #/root/datascience-snippets/run/boot.sh
 
+#mount a disk to store input/output files
+mkdir -p /mnt/datascience-input-output
 mount /dev/xvdf1 /mnt/datascience-input-output
 
 ./start-container.sh
