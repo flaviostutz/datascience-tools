@@ -24,7 +24,7 @@ if [ $secs -eq 0 ]; then
       ./aws-chicken-game.sh
    fi
 
-else
+#else
 #   echo "This script only runs on %5==0 minutes"
 
 fi
