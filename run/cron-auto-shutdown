@@ -12,10 +12,10 @@ if [ $secs -eq 0 ]; then
 
    echo "Verifying if machine is idle"
 
-   #get cpu average usage on the last 5 min
-   CPU=$(uptime | awk -F'[a-z]:' '{ print $2}' | awk -F', ' '{print $2 * 100}')
+   #get cpu average usage on the last 1 min
+   CPU=$(uptime | awk -F'[a-z]:' '{ print $2}' | awk -F', ' '{print $1 * 100}')
 
-   echo "CPU usage is $CPU (5min avg)"
+   echo "CPU usage is $CPU (1min avg)"
    if [ $CPU -gt 30 ]; then
       echo "CPU not idle. Canceling shutdown."
       shutdown -c
@@ -25,7 +25,7 @@ if [ $secs -eq 0 ]; then
    fi
 
 else
-   echo "This script only runs on %5==0 minutes"
+#   echo "This script only runs on %5==0 minutes"
 
 fi
 
