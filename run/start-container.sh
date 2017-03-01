@@ -3,6 +3,7 @@
 nvidia-smi
 if [ $? -eq 0 ]; then
     echo "STARTING CONTAINER WITH GPU SUPPORT"
+    ./aws-optimize-gpu.sh
     ./docker-run-gpu.sh
 
 else

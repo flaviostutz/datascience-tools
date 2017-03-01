@@ -11,3 +11,5 @@ mount /dev/xvdf1 /mnt/datascience-input-output
 
 ./start-container.sh
 
+#if no one handle cpu usage to maintain instance on, shutdown it automatically
+./aws-chicken-game.sh

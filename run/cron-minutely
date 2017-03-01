@@ -1,0 +1,31 @@
+#!/bin/bash
+
+cd /root/datascience-tools/run
+
+#run this script each 5 minutes
+let secs=$(( `date +%s` ))
+let secs=$secs%3600
+let secs=$secs/60
+let secs=$secs%5
+
+if [ $secs -eq 0 ]; then
+
+   echo "Verifying if machine is idle"
+
+   #get cpu average usage on the last 5 min
+   CPU=$(uptime | awk -F'[a-z]:' '{ print $2}' | awk -F', ' '{print $2 * 100}')
+
+   echo "CPU usage is $CPU (5min avg)"
+   if [ $CPU -gt 30 ]; then
+      echo "CPU not idle. Canceling shutdown."
+      shutdown -c
+   else
+      echo "CPU idle. Starting chicken game!"
+      ./aws-chicken-game.sh
+   fi
+
+else
+   echo "This script only runs on %5==0 minutes"
+
+fi
+
