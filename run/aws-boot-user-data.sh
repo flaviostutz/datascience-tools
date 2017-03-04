@@ -20,7 +20,7 @@ work_dir=/root/datascience-tools/run
 cd $work_dir
 
 echo "Shutdown if cpu gets idle"
-(crontab -l 2>/dev/null; echo "*/1 * * * * $work_dir/aws-shutdown-if-idle.sh >> /var/log/shutdown-if-idle.log") | crontab -
+(crontab -l 2>/dev/null; echo "*/5 * * * * $work_dir/aws-shutdown-if-idle.sh >> /var/log/shutdown-if-idle.log") | crontab -
 
 echo "Mount input dir volume"
 ./aws-mount-volume.sh vol-0722469c92cd5b04f /dev/xvdf /mnt/input

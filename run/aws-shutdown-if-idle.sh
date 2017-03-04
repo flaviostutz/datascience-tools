@@ -1,20 +1,12 @@
 #!/bin/bash
 
-#run this script each 5 minutes
-let secs=$(( `date +%s` ))
-let secs=$secs%3600
-let secs=$secs/60
-let secs=$secs%5
-
-if [ $secs -eq 0 ]; then
-
    echo "Verifying if machine is idle"
    date
 
    #get cpu average usage on the last 1 min
    CPU=$(uptime | awk -F'[a-z]:' '{ print $2}' | awk -F', ' '{print $1 * 100}')
 
-   echo "Active processes pending $CPU (1min avg)"
+   echo "There are active processes in the queue $CPU (1min avg)"
    if [ $CPU -gt 30 ]; then
       echo "CPU not idle. Canceling shutdown (the chicken has been got!)."
       shutdown -c
@@ -49,9 +41,4 @@ if [ $secs -eq 0 ]; then
       exit 1
 
    fi
-
-else
-   echo "This script only runs each 5 minutes"
-
-fi
 
