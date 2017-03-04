@@ -11,8 +11,8 @@ services:
       - 6006:6006
     volumes:
       - /root:/notebooks
-      - /root/input:/notebooks/input
-      - /root/output:/notebooks/output
+#      - /root/input:/notebooks/input
+#      - /root/output:/notebooks/output
 
  
   datascience-gpu:
@@ -24,6 +24,6 @@ services:
       - 6006:6006
     volumes:
       - /root:/notebooks
-      - /root/input:/notebooks/input
-      - /root/output:/notebooks/output
+#      - /root/input:/notebooks/input
+#      - /root/output:/notebooks/output
  
