@@ -44,6 +44,7 @@ rm /root/autorun.sh
 ln /root/datascience-snippets/autorun.sh /root/autorun.sh
 
 echo "Starting datascience tools container"
+sleep 10 
 ./start-container.sh
 
 date
