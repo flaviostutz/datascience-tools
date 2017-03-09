@@ -8,9 +8,8 @@ echo "========= BOOT START ==========="
 date
 
 echo "configure aws-cli"
-
-aws configure set aws_access_key_id aaaaaaaaaaaaaaaaaaaa
-aws configure set aws_secret_access_key Rbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+aws configure set aws_access_key_id aaaaaaaaaaaaaaaaaaaaaa
+aws configure set aws_secret_access_key bbbbbbbbbbbbbbbbbbbbbbbbbb
 aws configure set default.region us-east-1
 
 cd /root
@@ -23,16 +22,16 @@ cd $work_dir
 echo "Shutdown if cpu gets idle"
 (crontab -l 2>/dev/null; echo "*/5 * * * * $work_dir/aws-shutdown-if-idle.sh >> /var/log/shutdown-if-idle.log") | crontab -
 
-#echo "Mount input dir volume"
-#./aws-mount-volume.sh vol-0722469c92cd5b04f /dev/xvdf /mnt/input
-#rm /root/input
-#ln -s /mnt/input /root/input
+echo "Mount input dir volume"
+./aws-mount-volume.sh vol-063ca73106323fef2 /dev/xvdf /mnt/input
+rm /root/input
+ln -s /mnt/input /root/input
 
 echo "Mount output dir volume"
 ./aws-mount-volume.sh vol-008b02ff1c1897977 /dev/xvdg /mnt/output
 rm /root/output
 ln -s /mnt/output/output /root/output
-ln -s /mnt/output/input /root/input
+#ln -s /mnt/output/input /root/input
 
 echo "git clone scripts repo"
 cd /root
@@ -44,8 +43,7 @@ rm /root/autorun.sh
 ln /root/datascience-snippets/autorun.sh /root/autorun.sh
 
 echo "Starting datascience tools container"
-sleep 10 
-./start-container.sh
+(sleep 15 && ./start-container.sh)&
 
 date
 echo "========= BOOT END ========="
