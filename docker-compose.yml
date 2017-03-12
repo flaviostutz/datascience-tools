@@ -2,28 +2,26 @@ version: "3"
 
 services:
 
-  datascience-cpu:
+  cpu:
     build:
-      context: . 
+      context: .
       dockerfile: Dockerfile
     ports:
       - 8888:8888
       - 6006:6006
     volumes:
-      - /root:/notebooks
-#      - /root/input:/notebooks/input
-#      - /root/output:/notebooks/output
+      - /notebooks:/notebooks
+    environment:
+      - PASSWORD=flaviostutz
 
- 
-  datascience-gpu:
+  gpu:
     build:
-      context: . 
+      context: .
       dockerfile: Dockerfile-gpu
     ports:
       - 8888:8888
       - 6006:6006
     volumes:
-      - /root:/notebooks
-#      - /root/input:/notebooks/input
-#      - /root/output:/notebooks/output
- 
+      - /notebooks:/notebooks
+    environment:
+      - PASSWORD=flaviostutz

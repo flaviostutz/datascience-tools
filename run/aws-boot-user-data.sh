@@ -12,11 +12,16 @@ aws configure set aws_access_key_id aaaaaaaaaaaaaaaaaaaaaa
 aws configure set aws_secret_access_key bbbbbbbbbbbbbbbbbbbbbbbbbb
 aws configure set default.region us-east-1
 
+git config --global user.email "flaviostutz@gmail.com"
+git config --global user.name "flaviostutz"
+
 cd /root
+mkdir notebooks
+cd notebooks
 git clone https://github.com/flaviostutz/datascience-tools.git
 
-echo "set current dir to /root/datascience-tools/run"
-work_dir=/root/datascience-tools/run
+echo "set current dir to /notebooks/datascience-tools/run"
+work_dir=/notebooks/datascience-tools/run
 cd $work_dir
 
 echo "Shutdown if cpu gets idle"
@@ -24,26 +29,26 @@ echo "Shutdown if cpu gets idle"
 
 echo "Mount input dir volume"
 ./aws-mount-volume.sh vol-063ca73106323fef2 /dev/xvdf /mnt/input
-rm /root/input
-ln -s /mnt/input /root/input
+rm /notebooks/input
+ln -s /mnt/input /notebooks/input
 
 echo "Mount output dir volume"
 ./aws-mount-volume.sh vol-008b02ff1c1897977 /dev/xvdg /mnt/output
-rm /root/output
-ln -s /mnt/output/output /root/output
+rm /notebooks/output
+ln -s /mnt/output/output /notebooks/output
 #ln -s /mnt/output/input /root/input
 
 echo "git clone scripts repo"
-cd /root
+cd /root/notebooks
 git clone https://github.com/flaviostutz/datascience-snippets.git
 cd $work_dir
 
 #point autorun script that will be run on container start
-rm /root/autorun.sh
-ln /root/datascience-snippets/autorun.sh /root/autorun.sh
+rm /notebooks/autorun.sh
+ln /notebooks/datascience-snippets/autorun.sh /notebooks/autorun.sh
 
 echo "Starting datascience tools container"
-(sleep 15 && ./start-container.sh)&
+./start-container.sh
 
 date
 echo "========= BOOT END ========="
