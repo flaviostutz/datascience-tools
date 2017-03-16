@@ -10,6 +10,7 @@ RUN pip install scoop
 #GRAPHING
 RUN pip install plotly && \
 #    pip install python-igraph && \
+    pip install seaborn && \
     pip install altair && \
     pip install git+https://github.com/jakevdp/JSAnimation.git
 
@@ -31,6 +32,7 @@ RUN pip install h5py && \
 
 #IMAGE
 RUN pip install pydicom && \
+    pip install --trusted-host itk.org -f https://itk.org/SimpleITKDoxygen/html/PyDownloadPage.html SimpleITK && \
     pip install scikit-image && \
     pip install opencv-python && \
     pip install ImageHash && \
