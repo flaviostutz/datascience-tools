@@ -38,7 +38,7 @@ RUN pip install pydicom && \
     pip install ImageHash && \
     apt-get install libav-tools -y && \
     apt-get install imagemagick -y && \
-    pip install selectivesearch
+    pip install git+https://github.com/danoneata/selectivesearch.git
 
 #LEARNING
 RUN apt-get install pandoc -y && pip install pypandoc && pip install deap && \
