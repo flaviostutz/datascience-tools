@@ -36,7 +36,8 @@ RUN pip install pydicom && \
     pip install opencv-python && \
     pip install ImageHash && \
     apt-get install libav-tools -y && \
-    apt-get install imagemagick -y
+    apt-get install imagemagick -y && \
+    pip install selectivesearch
 
 #LEARNING
 RUN apt-get install pandoc -y && pip install pypandoc && pip install deap && \
