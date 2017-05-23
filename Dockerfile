@@ -5,7 +5,9 @@ RUN apt-get update && \
     apt-get install git -y
 
 #PROCESSING
-RUN pip install scoop
+RUN pip install scoop &&
+    pip install multiprocessing_generator
+
 
 #GRAPHING
 RUN pip install plotly && \
