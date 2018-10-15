@@ -23,7 +23,8 @@ RUN pip install Geohash && \
 #TEXT PROCESSING
 RUN pip install textblob && \
     pip install git+git://github.com/amueller/word_cloud.git && \
-    pip install toolz cytoolz
+    pip install toolz cytoolz && \
+    pip install --upgrade gensim
 
 #DATA
 RUN pip install h5py && \
