@@ -15,8 +15,7 @@ aws configure set default.region us-east-1
 git config --global user.email "flaviostutz@gmail.com"
 git config --global user.name "flaviostutz"
 
-cd /root
-mkdir notebooks
+mkdir /notebooks
 cd notebooks
 git clone https://github.com/flaviostutz/datascience-tools.git
 
@@ -36,10 +35,9 @@ echo "Mount output dir volume"
 ./aws-mount-volume.sh vol-008b02ff1c1897977 /dev/xvdg /mnt/output
 rm /notebooks/output
 ln -s /mnt/output/output /notebooks/output
-#ln -s /mnt/output/input /root/input
 
 echo "git clone scripts repo"
-cd /root/notebooks
+cd /notebooks
 git clone https://github.com/flaviostutz/datascience-snippets.git
 cd $work_dir
 
