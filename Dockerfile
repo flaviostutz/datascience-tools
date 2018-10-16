@@ -1,11 +1,12 @@
-FROM tensorflow/tensorflow:1.0.0-py3
+FROM tensorflow/tensorflow:1.12.0-rc0-py3
+# FROM tensorflow/tensorflow:1.0.0-py3
 #FROM tensorflow/tensorflow:1.0.0.2-gpu-py3
 
 RUN apt-get update && \
     apt-get install git -y
 
 #PROCESSING
-RUN pip install scoop &&
+RUN pip install scoop && \
     pip install multiprocessing_generator
 
 
@@ -25,7 +26,11 @@ RUN pip install Geohash && \
 RUN pip install textblob && \
     pip install git+git://github.com/amueller/word_cloud.git && \
     pip install toolz cytoolz && \
-    pip install --upgrade gensim
+    pip install gensim
+RUN python -c "import nltk; nltk.download('punkt')"
+RUN python -c "import nltk; nltk.download('rslp')"
+RUN python -c "import nltk; nltk.download('stopwords')"
+RUN python -c "import nltk; nltk.download('all-corpora')"
 
 #DATA
 RUN pip install h5py && \
