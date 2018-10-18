@@ -13,7 +13,8 @@ RUN pip install plotly && \
 #    pip install python-igraph && \
     pip install seaborn && \
     pip install altair && \
-    pip install git+https://github.com/jakevdp/JSAnimation.git
+    pip install git+https://github.com/jakevdp/JSAnimation.git && \
+    pip install bokeh
 
 #GEO
 RUN pip install Geohash && \
@@ -24,10 +25,12 @@ RUN pip install Geohash && \
 RUN pip install textblob && \
     pip install git+git://github.com/amueller/word_cloud.git && \
     pip install toolz cytoolz && \
-    pip install gensim
+    pip install gensim && \
+    pip install bs4
 RUN python -c "import nltk; nltk.download('punkt')"
 RUN python -c "import nltk; nltk.download('rslp')"
 RUN python -c "import nltk; nltk.download('stopwords')"
+RUN python -c "import nltk; nltk.download('floresta')"
 RUN python -c "import nltk; nltk.download('all-corpora')"
 
 #DATA
