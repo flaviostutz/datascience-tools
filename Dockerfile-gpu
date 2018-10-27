@@ -26,6 +26,7 @@ RUN pip install textblob && \
     pip install git+git://github.com/amueller/word_cloud.git && \
     pip install toolz cytoolz && \
     pip install gensim && \
+    pip install PyPDF2 && \
     pip install bs4
 RUN python -c "import nltk; nltk.download('punkt')"
 RUN python -c "import nltk; nltk.download('rslp')"

@@ -5,10 +5,11 @@ FROM tensorflow/tensorflow:1.12.0-rc0-py3
 RUN apt-get update && \
     apt-get install git -y
 
+RUN pip install --upgrade pip
+
 #PROCESSING
 RUN pip install scoop && \
     pip install multiprocessing_generator
-
 
 #GRAPHING
 RUN pip install plotly && \
@@ -28,6 +29,7 @@ RUN pip install textblob && \
     pip install git+git://github.com/amueller/word_cloud.git && \
     pip install toolz cytoolz && \
     pip install gensim && \
+    pip install PyPDF2 && \
     pip install bs4
 RUN python -c "import nltk; nltk.download('punkt')"
 RUN python -c "import nltk; nltk.download('rslp')"
@@ -80,6 +82,15 @@ RUN cd /usr/local/src && mkdir keras && cd keras && \
 RUN pip install wavio && \
     pip install trueskill
 
+#SPARK DRIVER
+# RUN apt-get install openjdk-8-jdk -y
+# RUN curl https://archive.apache.org/dist/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz --output /tmp/spark-2.3.0-bin-hadoop2.7.tgz
+# RUN cd /tmp && tar -xzf spark-2.3.0-bin-hadoop2.7.tgz && \
+#     mv spark-2.3.0-bin-hadoop2.7 /opt/spark-2.3.0 && \
+#     ln -s /opt/spark-2.3.0 /opt/spark̀
+# RUN pip install findspark
+# ENV SPARK_MASTER ''
+
 #CLEANUP
 RUN rm -rf /root/.cache/pip/* && \
     apt-get autoremove -y && \
@@ -89,5 +100,7 @@ RUN rm -rf /root/.cache/pip/* && \
 RUN apt-get install supervisor -y
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+ADD /start-jupyter.sh /
 
 CMD ["/usr/bin/supervisord"]

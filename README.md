@@ -8,13 +8,15 @@ This container was created to support various experimentations on Datascience, m
 - Python 3
 - Jupyter
 - TensorFlow (CPU and GPU flavors)
+- Spark driver (set SPARK_MASTER ENV pointing to your Spark Master)
 - Scoop, h5py, pandas, scikit, TFLearn, plotly
 - pyexcel-ods, pydicom, textblob, wavio, trueskill, cytoolz, ImageHash...
 
 **Run container:**
 
    - CPU only:
-      - `docker run -d -v /root:/notebooks -v /root/input:/notebooks/input -v /root/output:/notebooks/output -p 8888:8888 -p 6006:6006 --name jupyter flaviostutz/datascience-tools`
+      - `docker-compose up cpu`
+
    - GPU support for TensorFlow:
       - **Prepare host machine with NVIDIA Cuda drivers**
          - `sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub`
@@ -55,7 +57,7 @@ This container was created to support various experimentations on Datascience, m
 
 **Build container:**
 
-   - `docker-compose build`
+   - `docker-compose build cpu`
      OR
    - `docker build . -f Dockerfile`
    - `docker build . -f Dockerfile-gpu`

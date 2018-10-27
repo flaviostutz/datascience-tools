@@ -2,11 +2,11 @@ version: "3"
 
 services:
 
-  datascience-tools:
+  datascience-tools-gpu:
     build:
       context: .
-      dockerfile: Dockerfile
-    image: flaviostutz/datascience-tools:1.12.0
+      dockerfile: Dockerfile-gpu
+    image: flaviostutz/datascience-tools:1.0.0-gpu
     ports:
       - 8888:8888
       - 6006:6006
@@ -14,4 +14,3 @@ services:
       - /notebooks:/notebooks
     environment:
       - PASSWORD=flaviostutz
-      - SPARK_MASTER=spark-master
