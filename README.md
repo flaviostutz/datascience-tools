@@ -15,7 +15,26 @@ This container was created to support various experimentations on Datascience, m
 **Run container:**
 
    - CPU only:
-      - `docker-compose up cpu`
+
+      * create docker-compose.yml
+
+      ```
+      version: "3"
+
+      services:
+
+        datascience-tools:
+          image: flaviostutz/datascience-tools
+          ports:
+            - 8888:8888
+            - 6006:6006
+          volumes:
+            - /notebooks:/notebooks
+          environment:
+            - PASSWORD=flaviostutz
+            - SPARK_MASTER=spark-master
+      ```
+      * `docker-compose up`
 
    - GPU support for TensorFlow:
       - **Prepare host machine with NVIDIA Cuda drivers**
