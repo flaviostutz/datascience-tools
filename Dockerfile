@@ -30,6 +30,7 @@ RUN pip install textblob && \
     pip install toolz cytoolz && \
     pip install gensim && \
     pip install PyPDF2 && \
+    pip install slate3k && \
     pip install bs4
 RUN python -c "import nltk; nltk.download('punkt')"
 RUN python -c "import nltk; nltk.download('rslp')"
