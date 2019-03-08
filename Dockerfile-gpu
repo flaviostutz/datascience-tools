@@ -80,8 +80,8 @@ RUN rm -rf /root/.cache/pip/* && \
     apt-get clean && \
     rm -rf /usr/local/src/*
 
-RUN mkdir -p /notebooks/input
-RUN mkdir -p /notebooks/output
+RUN mkdir -p /notebooks/data/input
+RUN mkdir -p /notebooks/data/output
 
 #SUPERVISOR FOR MULTIPLE PROCESSES
 RUN apt-get install supervisor -y
