@@ -20,6 +20,12 @@ RUN pip install plotly && \
 #GEO
 RUN pip install Geohash && \
     pip install mplleaflet && \
+    pip install shapely && \
+    pip install geopandas && \
+    pip install descartes && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable && \
+    apt update && \
     apt-get install libgeos-dev -y && \
     apt-get install -y gdal-bin python-gdal python3-gdal && \
     pip install mgrspy
