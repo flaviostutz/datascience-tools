@@ -10,8 +10,8 @@ services:
     ports:
       - 8888:8888
       - 6006:6006
-    volumes:
-      - /notebooks:/notebooks
+    # volumes:
+    #   - /notebooks:/notebooks
     environment:
       - PASSWORD=flaviostutz
       - SPARK_MASTER=spark-master

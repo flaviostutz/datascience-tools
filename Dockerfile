@@ -1,4 +1,5 @@
 FROM tensorflow/tensorflow:2.0.0a0-py3-jupyter
+# FROM flaviostutz/datascience-tools:2.0.0
 
 RUN apt-get update && \
     apt-get install git -y
@@ -23,12 +24,17 @@ RUN pip install Geohash && \
     pip install shapely && \
     pip install geopandas && \
     pip install descartes && \
+    pip install rasterio && \
+    pip install rasterstats && \
+    pip install folium && \
+    pip install pyepsg && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable && \
     apt update && \
-    apt-get install libgeos-dev -y && \
+    apt-get install libproj-dev libgeos-dev -y && \
     apt-get install -y gdal-bin python-gdal python3-gdal && \
-    pip install mgrspy
+    pip install mgrspy && \
+    pip install cartopy
 
 #TEXT PROCESSING
 RUN pip install textblob && \
