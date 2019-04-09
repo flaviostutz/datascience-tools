@@ -74,7 +74,8 @@ RUN apt-get install pandoc -y && pip install pypandoc && pip install deap && \
 
 #MISC
 RUN pip install wavio && \
-    pip install trueskill
+    pip install trueskill && \
+    pip install papermill
 
 #SPARK DRIVER
 #RUN apt-get install openjdk-8-jdk -y
