@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: flaviostutz/datascience-tools:2.4.1
+    image: flaviostutz/datascience-tools:2.6
     ports:
       - 8888:8888
       - 6006:6006

@@ -18,24 +18,6 @@ RUN pip install plotly && \
     pip install git+https://github.com/jakevdp/JSAnimation.git && \
     pip install bokeh
 
-#GEO
-RUN pip install Geohash && \
-    pip install mplleaflet && \
-    pip install shapely && \
-    pip install geopandas && \
-    pip install descartes && \
-    pip install rasterio && \
-    pip install rasterstats && \
-    pip install folium && \
-    pip install pyepsg && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable && \
-    apt update && \
-    apt-get install libproj-dev libgeos-dev -y && \
-    apt-get install -y gdal-bin python-gdal python3-gdal && \
-    pip install mgrspy && \
-    pip install cartopy
-
 #TEXT PROCESSING
 RUN pip install textblob && \
     pip install git+git://github.com/amueller/word_cloud.git && \
@@ -78,6 +60,25 @@ RUN apt-get install pandoc -y && pip install pypandoc && pip install deap && \
 RUN pip install wavio && \
     pip install trueskill && \
     pip install papermill
+
+#GEO
+RUN pip install Geohash && \
+    pip install mplleaflet && \
+    pip install shapely && \
+    pip install geopandas && \
+    pip install descartes && \
+    pip install rasterio && \
+    pip install rasterstats && \
+    pip install folium && \
+    pip install pyepsg && \
+    pip install OWSLib && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable && \
+    apt update && \
+    apt-get install libproj-dev libgeos-dev -y && \
+    apt-get install -y gdal-bin python-gdal python3-gdal && \
+    pip install mgrspy && \
+    pip install cartopy
 
 #SPARK DRIVER
 # RUN apt-get install openjdk-8-jdk -y
