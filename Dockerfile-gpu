@@ -67,9 +67,9 @@ RUN pip install Geohash && \
     pip install descartes && \
     pip install rasterio && \
     pip install rasterstats && \
+    pip install git+https://github.com/flaviostutz/sentinelloader && \
     pip install folium && \
     pip install pyepsg && \
-    pip install OWSLib && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable && \
     apt update && \
