@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-gpu
-    image: flaviostutz/datascience-tools:2.4.1-gpu
+    image: flaviostutz/datascience-tools:2.6.0-gpu
     ports:
       - 8888:8888
       - 6006:6006
