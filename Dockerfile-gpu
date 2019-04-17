@@ -67,7 +67,6 @@ RUN pip install Geohash && \
     pip install descartes && \
     pip install rasterio && \
     pip install rasterstats && \
-    pip install git+https://github.com/flaviostutz/sentinelloader && \
     pip install folium && \
     pip install pyepsg && \
     apt-get install -y software-properties-common && \
@@ -76,6 +75,7 @@ RUN pip install Geohash && \
     apt-get install libproj-dev libgeos-dev -y && \
     apt-get install -y gdal-bin python-gdal python3-gdal && \
     pip install mgrspy && \
+    pip install git+https://github.com/flaviostutz/sentinelloader && \
     pip install cartopy
 
 #SPARK DRIVER
