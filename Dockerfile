@@ -80,6 +80,8 @@ RUN pip install Geohash && \
     pip install git+https://github.com/flaviostutz/sentinelloader && \
     apt-get install -y libspatialindex-dev && \
     pip install rtree && \
+    pip uninstall -y pyepsg && \
+    pip install git+https://github.com/flaviostutz/pyepsg && \
     pip install cartopy
 
 #SPARK DRIVER
