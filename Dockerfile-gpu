@@ -76,6 +76,8 @@ RUN pip install Geohash && \
     apt-get install -y gdal-bin python-gdal python3-gdal && \
     pip install mgrspy && \
     pip install git+https://github.com/flaviostutz/sentinelloader && \
+    apt-get install -y libspatialindex-dev && \
+    pip install rtree && \
     pip install cartopy
 
 #SPARK DRIVER
