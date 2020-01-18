@@ -9,6 +9,7 @@ This container was created to support various experimentations on Datascience, m
 - Jupyter
 - TensorFlow (CPU and GPU flavors)
 - Spark driver (set SPARK_MASTER ENV pointing to your Spark Master)
+  - For creating a Spark Cluster, you can check https://github.com/flaviostutz/spark-swarm-cluster
 - Scoop, h5py, pandas, scikit, TFLearn, plotly
 - pyexcel-ods, pydicom, textblob, wavio, trueskill, cytoolz, ImageHash...
 
