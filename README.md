@@ -13,7 +13,7 @@ This container was created to support various experimentations on Datascience, m
 - Scoop, h5py, pandas, scikit, TFLearn, plotly
 - pyexcel-ods, pydicom, textblob, wavio, trueskill, cytoolz, ImageHash...
 
-**Run container:**
+## Run container:
 
    - CPU only:
 
@@ -21,9 +21,7 @@ This container was created to support various experimentations on Datascience, m
 
       ```
       version: "3"
-
       services:
-
         datascience-tools:
           image: flaviostutz/datascience-tools
           ports:
@@ -32,8 +30,7 @@ This container was created to support various experimentations on Datascience, m
           volumes:
             - /notebooks:/notebooks
           environment:
-            - PASSWORD=flaviostutz
-            - SPARK_MASTER=spark-master
+            - JUPYTER_TOKEN=flaviostutz
       ```
       * `docker-compose up`
 
@@ -53,8 +50,12 @@ This container was created to support various experimentations on Datascience, m
          ./boot.sh >> /var/log/boot-script`
       - Change "/root/datascience-tools" to where you cloned this repo
 
+**Access:**
 
-**Autorun script:**
+- http://[ip]:8888 for Jupyter
+- http://[ip]:6006 for TensorBoard
+
+## Autorun script
 
    - When this container starts, it runs:
       - Jupyter Notebook server on port 8888
@@ -70,15 +71,24 @@ This container was created to support various experimentations on Datascience, m
             - `#!/bin/bash
                python test.py`
 
-**Access:**
+## Build instructions
 
-   - http://[ip]:8888 for Jupyter
-   - http://[ip]:6006 for TensorBoard
+- `docker build . -f Dockerfile`
+- `docker build . -f Dockerfile-gpu`
 
-**Build container:**
+## Tips for development of your own Notebooks
 
-   - `docker-compose build cpu`
-     OR
-   - `docker build . -f Dockerfile`
-   - `docker build . -f Dockerfile-gpu`
+- A good practice is to store your notebook scripts in a git repository
+  - Ex.: http://github.com/flaviostutz/puzzler
 
+- Run datascience-tools container and map the volume "/notebooks", inside the container, to the path you cloned your git repository in your computer
+
+- You can edit/save/run the scripts from the web interface (http://localhost:8888) or directly with other tools on your computer. You can commit and push your code to the destination repository directly (no copy from/to container is needed because the volume is mapped)
+
+- For running in production, create a new container with "FROM flaviostutz/datascience-tools" and add your script files to "/notebooks" so when you run the container it will have your custom scripts embedded into it. No "volume" mapping is needed for this container.
+
+## ENVs variables
+
+- JUPYTER_TOKEN - token needed for the users to open Jupyter. defaults to '', so that no token or password will asked to the user
+
+- SPARK_MASTER - Spark master address. Used if you want to send jobs to an external Spark cluster and still control the whole job from Jupyter Notebook itself.

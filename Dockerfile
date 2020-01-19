@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.0.0a0-py3-jupyter
+FROM tensorflow/tensorflow:2.1.0-py3-jupyter
 # FROM flaviostutz/datascience-tools:2.0.0
 
 RUN apt-get update && \
@@ -44,7 +44,7 @@ RUN pip install pydicom && \
     pip install scikit-image && \
     pip install opencv-python && \
     pip install ImageHash && \
-    apt-get install libav-tools -y && \
+    apt-get install ffmpeg -y && \
     apt-get install imagemagick -y && \
     pip install git+https://github.com/danoneata/selectivesearch.git
 
@@ -70,19 +70,22 @@ RUN pip install Geohash && \
     pip install rasterio && \
     pip install rasterstats && \
     pip install folium && \
-    pip install pyepsg && \
-    apt-get install -y software-properties-common && \
+    pip install pyepsg
+RUN apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable && \
     apt update && \
-    apt-get install libproj-dev libgeos-dev -y && \
-    apt-get install -y gdal-bin python-gdal python3-gdal && \
+    apt-get install -y gdal-bin && \
+    apt-get install -y python-gdal python3-gdal && \
+    apt-get install -y libproj-dev libgeos-dev && \
     pip install mgrspy && \
-    pip install git+https://github.com/flaviostutz/sentinelloader && \
-    apt-get install -y libspatialindex-dev && \
+    pip install git+https://github.com/flaviostutz/sentinelloader
+RUN apt-get install -y libspatialindex-dev && \
     pip install rtree && \
     pip uninstall -y pyepsg && \
     pip install git+https://github.com/flaviostutz/pyepsg && \
-    pip install cartopy
+    pip uninstall -y enum34 && \
+    pip install cython && \
+    pip install git+https://github.com/snowman2/cartopy.git@5e624fe
 
 #SPARK DRIVER
 # RUN apt-get install openjdk-8-jdk -y
@@ -106,5 +109,8 @@ RUN mkdir -p /notebooks/data/output
 RUN apt-get install supervisor -y
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD /start-jupyter.sh /
+
+ENV JUPYTER_TOKEN ''
+ENV SPARK_MASTER ''
 
 CMD ["/usr/bin/supervisord"]

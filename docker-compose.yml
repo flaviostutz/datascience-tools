@@ -1,4 +1,4 @@
-version: "3"
+version: "3.5"
 
 services:
 
@@ -6,12 +6,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: flaviostutz/datascience-tools:2.8.0
+    image: flaviostutz/datascience-tools:2.9.0
     ports:
       - 8888:8888
       - 6006:6006
     # volumes:
     #   - /notebooks:/notebooks
     environment:
-      - PASSWORD=flaviostutz
-      - SPARK_MASTER=spark-master
+      - JUPYTER_TOKEN=flaviostutz

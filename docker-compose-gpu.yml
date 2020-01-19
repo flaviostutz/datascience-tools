@@ -1,4 +1,4 @@
-version: "3"
+version: "3.5"
 
 services:
 
@@ -6,11 +6,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-gpu
-    image: flaviostutz/datascience-tools:2.8.0-gpu
+    image: flaviostutz/datascience-tools:2.9.0-gpu
     ports:
       - 8888:8888
       - 6006:6006
-    volumes:
-      - /notebooks:/notebooks
+    # volumes:
+    #   - /notebooks:/notebooks
     environment:
-      - PASSWORD=flaviostutz
+      - JUPYTER_PASSWORD=flaviostutz

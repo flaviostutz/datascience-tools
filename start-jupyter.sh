@@ -6,5 +6,5 @@ echo "Starting Jupyter..."
 # export PATH=$SPARK_HOME/bin:$PATH
 # export PYSPARK_SUBMIT_ARGS="--master $SPARK_MASTER"
 
-jupyter notebook "$@" --ip 0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.notebook_dir='/notebooks'
+jupyter notebook "$@" --ip 0.0.0.0 --no-browser --allow-root --NotebookApp.allow_password_change=False --NotebookApp.token="$JUPYTER_TOKEN" --NotebookApp.password='' --NotebookApp.notebook_dir='/notebooks'
 
