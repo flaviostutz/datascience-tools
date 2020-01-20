@@ -107,7 +107,6 @@ RUN mkdir -p /notebooks/data/output
 RUN apt-get install supervisor -y
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD /start-jupyter.sh /
-ADD /hashpass.py /
 
 ENV JUPYTER_TOKEN ''
 ENV SPARK_MASTER ''
