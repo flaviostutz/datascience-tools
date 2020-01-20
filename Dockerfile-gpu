@@ -42,7 +42,7 @@ RUN pip install pydicom && \
     pip install scikit-image && \
     pip install opencv-python && \
     pip install ImageHash && \
-    apt-get install libav-tools -y && \
+    apt-get install ffmpeg -y && \
     apt-get install imagemagick -y && \
     pip install git+https://github.com/danoneata/selectivesearch.git
 

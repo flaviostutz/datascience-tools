@@ -83,9 +83,20 @@ This container was created to support various experimentations on Datascience, m
 
 - Run datascience-tools container and map the volume "/notebooks", inside the container, to the path you cloned your git repository in your computer
 
-- You can edit/save/run the scripts from the web interface (http://localhost:8888) or directly with other tools on your computer. You can commit and push your code to the destination repository directly (no copy from/to container is needed because the volume is mapped)
+- You can edit/save/run the scripts from the web interface (http://localhost:8888) or directly with other tools on your computer. You can commit and push your code to the  repository directly (no copy from/to container is needed because the volume is mapped)
+```
+version: "3"
+services:
+   datascience-tools:
+      image: flaviostutz/datascience-tools
+      ports:
+      - 8888:8888
+      - 6006:6006
+      volumes:
+      - /Users/flaviostutz/Documents/development/flaviostutz/puzzler/notebooks:/notebooks
+```
 
-- For running in production, create a new container with "FROM flaviostutz/datascience-tools" and add your script files to "/notebooks" so when you run the container it will have your custom scripts embedded into it. No "volume" mapping is needed for this container.
+- For running in production, create a new container with "FROM flaviostutz/datascience-tools" and add your script files to "/notebooks" so when you run the container it will have your custom scripts embedded into it. No "volume" mapping is needed for this container. During container startup, script /notebooks/autorun.sh will run if present.
 
 ## ENVs variables
 
