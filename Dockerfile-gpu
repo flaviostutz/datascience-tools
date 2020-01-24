@@ -37,7 +37,8 @@ RUN pip install h5py && \
     pip install sklearn-pandas
 
 #IMAGE
-RUN pip install pydicom && \
+RUN apt-get install -y libsm6 libxext6 libxrender-dev libglib2.0-0 && \
+    pip install pydicom && \
     pip install --trusted-host itk.org -f https://itk.org/SimpleITKDoxygen/html/PyDownloadPage.html SimpleITK && \
     pip install scikit-image && \
     pip install opencv-python && \
