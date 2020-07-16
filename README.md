@@ -1,5 +1,7 @@
 # Datascience tools container
 
+<img src="https://img.shields.io/docker/automated/flaviostutz/datascience-tools"/>
+
 This container was created to support various experimentations on Datascience, mainly in the context of Kaggle competitions.
 
 **Bundled tools:**
